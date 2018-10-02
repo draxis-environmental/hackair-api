@@ -1,0 +1,35 @@
+<?php
+
+return [
+    'resource_not_found'            =>  'Ressurs ikke funnet',
+    'unknown_credentials'           =>  "Feil epost eller passord.\n Vennligst pr¯v igjen.",
+    'unauthorized'                  =>  'Uautorisert',
+    'bad_request'                   =>  'Feil ved foresp¯rsel',
+    'aq_not_found'                  =>  'Luftkvalitet ikke funnet',
+    'email_not_exists'              =>  'Ingen bruker funnet for denne eposten.',
+    'change_password_email'         =>  'Epost om Â tilbakestille passord har blitt sendt til din epostkonto!',
+    'changed_password'              =>  'Passordet er nÂ tilbakestilt!',
+    'updated_password'              =>  'Passordet er nÂ endret!',
+    'changed_private'               =>  'Personverninnstillingene er nÂ endret',
+    'invalid_password_reset_token'  =>  'Lenken for tilbakestilling av passord er ugyldig.',
+    'wrong_password'                =>  'Feil passord.',
+    'follower_added'                =>  'Du f¯lger nÂ denne personen!',
+    'follower_existed'              =>  'Du f¯lger allerede denne personen.',
+    'follower_deleted'              =>  'Du f¯lger ikke lenger denne personen.',
+    'follower_not_found'            =>  'Du f¯lger ikke denne personen.',
+    'user_not_found'                =>  'Bruker ikke funnet.',
+    'follower_invited'              =>  'Epostinvitasjon er sendt!',
+    'user_already_exists'           =>  'Bruker allerede registrert.',
+    'social_activity_enabled'       =>  'Din aktivitet er nÂ synlig for andre.',
+    'social_activity_disabled'      =>  'Din aktivitet er nÂ skjult for andre.',
+    'no_member_of_communities'      =>  'Du er ikke medlem av noen nettsamfunn.',
+    'no_owner_of_communities'       =>  'Du er ikke eier av noen nettsamfunn.',
+    'owner_try_to_leave'            =>  'Du er gruppens eier og kan ikke forlate den!',
+    'successfully_joined_community' =>  'Du er nÂ medlem av nettsamfunnet.',
+    'successfully_left_community'   =>  'Du har forlatt nettsamfunnet.',
+    'recommendation_api_error'      =>  'Feil ved kommunikasjon med CERTH API.',
+    'recommendation_api_invalid'    =>  'Feil ved validering. Ufullstendig brukerprofil.',
+    'unconfirmed'                   =>  'You need to confirm your email first.You have received a confirmation email which contains instructions in order to confirm your email account.',
+    'invalidInput'                   =>  'Please feel login form with valid email and password'
+
+];

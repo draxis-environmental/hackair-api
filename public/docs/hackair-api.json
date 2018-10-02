@@ -1,0 +1,1545 @@
+{
+    "swagger": "2.0",
+    "host": "api.hackair.eu",
+    "basePath": "/",
+    "info": {
+        "version": "0.1.0",
+        "title": "HackAIR REST API"
+    },
+    "tags": [
+        {
+            "name": "Users",
+            "description": "User registration, authentication & management"
+        },
+        {
+            "name": "Sensors",
+            "description": "Sensor registration / deletion / key generation"
+        },
+        {
+            "name": "Measurements",
+            "description": "Measurement filtering, storage, etc."
+        },
+        {
+            "name": "Photos",
+            "description": "Photo analysis queue and filtering"
+        },
+        {
+            "name": "Air Quality",
+            "description": "Air Quality retrieval"
+        }
+    ],
+    "paths": {
+        "/users/{userId}": {
+            "get": {
+                "description": "Find user.",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful user retrieval",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update user.",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful user update",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete user.",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful delete",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "description": "User registration.",
+
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "The user's first name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "surname",
+                        "in": "formData",
+                        "description": "The user's surnamename",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "A unique username",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "The user's email address",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "The user's password",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful user creation",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["201"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "number"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Input error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "number"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "User login",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "The user's email address",
+                        "required": true,
+                        "type": "string",
+                        "format": "example@example.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "The user's password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful login",
+                        "schema": {
+                            "title": "Response",
+                            "type": "object",
+                            "properties": {
+                                "payload": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized access",
+                        "schema": {
+                            "title": "Response",
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sensors": {
+            "post": {
+                "tags": [
+                    "Sensors"
+                ],
+                "description": "Create a new sensor.",
+                "consumes": [
+                    "json"
+                ],
+                "produces": [
+                    "json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT token",
+                        "required": true,
+                        "type": "string",
+                        "format": "Bearer: Token"
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "A unique name for your sensor",
+                        "required": true,
+                        "type": "string",
+                        "format": "ExampleSensorName"
+                    },
+                    {
+                        "name": "type",
+                        "in": "body",
+                        "description": "The sensor's type ('arduino' or 'bleair')",
+                        "required": true,
+                        "type": "string",
+                        "format": "arduino"
+                    },
+                    {
+                        "name": "mac_address",
+                        "in": "body",
+                        "description": "The sensor's mac address (for bleair sensors)",
+                        "required": false,
+                        "type": "string",
+                        "format": "38:01:95:CA:4F:C8"
+                    },
+                    {
+                        "name": "location",
+                        "in": "body",
+                        "description": "A LatLng point in geoJSON format",
+                        "required": true,
+                        "type": "Object",
+                        "format": "ExampleSensorName"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful creation of sensor",
+                        "schema": {
+                            "title": "Sensor",
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "access_key": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sensors/{sensorId}": {
+            "get": {
+                "description": "Find sensor.",
+                "tags": [
+                    "Sensors"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sensorId",
+                        "in": "path",
+                        "description": "Sensor Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful sensor retrieval",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update sensor.",
+                "tags": [
+                    "Sensors"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sensorId",
+                        "in": "path",
+                        "description": "Sensor Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful sensor update",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete sensor.",
+                "tags": [
+                    "Sensors"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "sensorId",
+                        "in": "path",
+                        "description": "Sensor Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful delete",
+                        "schema": {
+                            "title": "Sensor",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sensor/{sensorId}/access_key": {
+            "put": {
+                "tags": [
+                    "Sensors"
+                ],
+                "description": "Renew a sensor's access key",
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "sensorId",
+                        "in": "path",
+                        "description": "Sensor Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful renewal of access",
+                        "schema": {
+                            "title": "Sensor",
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "access_key": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/measurements": {
+            "get": {
+                "tags": [
+                    "Measurements"
+                ],
+                "description": "Find measurements.",
+                "produces": [
+                    "json",
+                    "geojson"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "timestampStart",
+                        "in": "query",
+                        "description": "Find measurements taken after this date",
+                        "required": true,
+                        "type": "string",
+                        "format": "2016-11-11T00:00:00Z"
+                    },
+                    {
+                        "name": "timestampEnd",
+                        "in": "query",
+                        "description": "Find measurements taken before this date",
+                        "required": false,
+                        "type": "string",
+                        "format": "2016-11-12T00:00:00Z"
+                    },
+                    {
+                        "name": "location",
+                        "in": "query",
+                        "description": "Find measurements in a specific rectangle or polygon. Each point should be separated by '|' (e.g. -20,30|45,60)",
+                        "required": false,
+                        "type": "string",
+                        "format": "21.12,12.22"
+                    },
+                    {
+                        "name": "source",
+                        "in": "query",
+                        "description": "Filter measurements of specific source(s). Could contain one value or a comma separated list of values. Possible values: flickr, webcams, mobile, sensors_arduino, sensors_bleair, sensors_cots, websites, webservices.",
+                        "required": false,
+                        "type": "string",
+                        "format": "flickr/sensors_arduino"
+                    },
+                    {
+                        "name": "sensor",
+                        "in": "query",
+                        "description": "Find measurements for a specific sensor id",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Find measurements for a specific user id",
+                        "required": false,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "pollutant",
+                        "in": "query",
+                        "description": "Filter measurements of specific pollutant type",
+                        "required": false,
+                        "type": "string",
+                        "format": "aod/pm10/pm2.5"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Response type",
+                        "required": false,
+                        "type": "string",
+                        "format": "json/geojson"
+                    },
+                    {
+                        "name": "show",
+                        "in": "query",
+                        "description": "Defines how measurements are returned, specifically sensor measurements. Use: 'latest' for the latest measurements, 'hourly_averages' for hourly averages or 'all' for all measurements. Default: 'latest",
+                        "required": false,
+                        "type": "string",
+                        "format": "json/geojson"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful retrieval of measurements",
+                        "schema": {
+                            "title": "Measurements",
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "type": "string",
+                                        "enum": ["200"]
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "data": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "loc": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "type":{
+                                                            "type": "string",
+                                                            "enum": ["Point","MultiPoint","LineString","MultiLineString","Polygon","MultiPolygon"]
+                                                            },
+                                                            "coordinates": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "number",
+                                                                "example": [4.49965, 52.06891]
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "pollutant_q": {
+                                                    "type": "object",
+                                                    "properties":{
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "value": {
+                                                            "type": "string"
+                                                        },
+                                                        "unit": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "example": {"name": "PM10_AirPollutantValue", "value": "176.60", "unit": "mg"}
+                                                },
+                                                "pollutant_i": {
+                                                    "type": "object",
+                                                    "properties":{
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "index": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "example": {"name": "PM10_AirPollutantIndex", "index": "bad"}
+                                                },
+                                                "datetime": {
+                                                    "type": "number",
+                                                    "example": 1499757889
+                                                },
+                                                "date_str": {
+                                                    "type": "string",
+                                                    "example": "2017-07-11T07:24:49.000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2017-07-11 07:24:49"
+                                                },
+                                                "source_type": {
+                                                    "type": "string",
+                                                    "enum": ["sensors_arduino","flickr","webcams","mobile","sensors_bleair","sensors_cots","websites","webservices"]
+                                                },
+                                                "source_info": {
+                                                    "type": "object",
+                                                    "properties":{
+                                                        "user": {
+                                                            "type": "object",
+                                                            "properties":{
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "example": 1
+                                                                },
+                                                                "username": {
+                                                                    "type": "string",
+                                                                    "example": "demo"
+                                                                }
+                                                            }
+                                                        },
+                                                        "sensor": {
+                                                            "type": "object",
+                                                            "properties":{
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "example": 1
+                                                                },
+                                                                "battery": {
+                                                                    "type": "number"
+                                                                },
+                                                                "tamper": {
+                                                                    "type": "number"
+                                                                },
+                                                                "error": {
+                                                                    "type": "number"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+                    },
+                    "404": {
+                        "description": "No measurements found",
+                        "schema": {
+                            "title": "Response",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Measurements"
+                ],
+                "description": "Create a new measurement.",
+                "consumes": [
+                    "json"
+                ],
+                "parameters": [
+                    {
+                        "name": "location",
+                        "in": "formData",
+                        "description": "LatLng of point",
+                        "required": false,
+                        "type": "string",
+                        "format": "21.12,12.22"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful retrieval of measurements",
+                        "schema": {
+                            "title": "Measurements",
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "post.arduino": {
+                "tags": [
+                    "Measurements"
+                ],
+                "description": "Create a new arduino measurement.",
+                "consumes": [
+                    "json"
+                ],
+                "parameters": [
+                    {
+                        "name": "timestamp",
+                        "in": "formData",
+                        "description": "Timestamp",
+                        "required": false,
+                        "type": "string",
+                        "format": "2016-11-12, 01:23:45"
+                    },
+                    {
+                        "name": "reading",
+                        "in": "formData",
+                        "description": "Sensor measurements",
+                        "required": true,
+                        "type": "object",
+                        "format": "2016-11-12, 01:23:45"
+                    },
+                    {
+                        "name": "battery",
+                        "in": "formData",
+                        "description": "Sensor battery level",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tamper",
+                        "in": "formData",
+                        "description": "Sensor tamper flag",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "error",
+                        "in": "formData",
+                        "description": "Sensor error flag",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful creation of measurement",
+                        "schema": {
+                            "title": "Measurements",
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "post.bleair": {
+                "tags": [
+                    "Measurements"
+                ],
+                "description": "Create a new bleair measurement.",
+                "consumes": [
+                    "json"
+                ],
+                "parameters": [
+                    {
+                        "name": "timestamp",
+                        "in": "formData",
+                        "description": "Timestamp",
+                        "required": false,
+                        "type": "string",
+                        "format": "2016-11-12, 01:23:45"
+                    },
+                    {
+                        "name": "location",
+                        "in": "formData",
+                        "description": "Location",
+                        "required": true,
+                        "type": "object"
+                    },
+                    {
+                        "name": "reading",
+                        "in": "formData",
+                        "description": "Sensor measurements",
+                        "required": true,
+                        "type": "object",
+                        "format": "2016-11-12, 01:23:45"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful creation of measurement",
+                        "schema": {
+                            "title": "Measurements",
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/photos": {
+            "get": {
+                "description": "Find photos for a specific user.",
+                "tags": [
+                    "Photos"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful photos retrieval",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete photo.",
+                "tags": [
+                    "Photos"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization header (Bearer xxxxxxx)",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "photoId",
+                        "in": "path",
+                        "description": "Photo Id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful delete",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["401"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found error",
+                        "schema": {
+                            "title": "Response",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["404"]
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/photos/flickr": {
+            "post": {
+                "tags": [
+                    "Photos"
+                ],
+                "description": "Add a Flick photo to the processing queue",
+                "consumes": [
+                    "json"
+                ],
+                "parameters": [
+                    {
+                        "name": "location",
+                        "in": "formData",
+                        "description": "LatLng of point",
+                        "required": false,
+                        "type": "string",
+                        "format": "21.12,12.22"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful addition of photo to processing queue",
+                        "schema": {
+                            "title": "Measurements",
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aq": {
+            "get": {
+                "tags": [
+                    "Air Quality"
+                ],
+                "description": "Find air quality.",
+                "produces": [
+                    "json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "description": "API Version header",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "default": "application/vnd.hackair.v1+json"
+                    },
+                    {
+                        "name": "lon",
+                        "in": "query",
+                        "description": "Find air quality for the given longitude",
+                        "required": true,
+                        "type": "string",
+                        "format": "10.50"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Find air quality for the given latitude",
+                        "required": true,
+                        "type": "string",
+                        "format": "20.100"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful retrieval of air quality",
+                        "schema": {
+                            "title": "User",
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "enum": ["200"]
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "enum": ["success"]
+                                },
+                                "data": {
+                                    "type": "object",
+                                    "properties": {
+                                        "AQI_Value": {
+                                            "type": "string"
+                                        },
+                                        "AQI_Index": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No air quality found",
+                        "schema": {
+                            "title": "Response",
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
