@@ -41,7 +41,6 @@ php artisan migrate --seed
 ## Documentation
 Please refer to our online documentation for more information.
 * [API Documentation](https://api.hackair.eu/docs/)
-* [Download measurements / connect sensors endpoints](http://www.hackair.eu/docs/api/)
 
 ## License
 The hackAIR API is open-sourced software licensed under the [GNU AGPLv3 license](https://opensource.org/licenses/AGPL-3.0)
