@@ -1,4 +1,8 @@
 # hackAIR REST API based on Lumen v5.3
+
+## Deprecation notice
+This is an old version of the hackAIR web application, and is not actively supported.
+
 ## Description
 Backend RESTful API based on Lumen v5.3 used for exchanging information with the [hackAIR web app](https://github.com/hackair-project/hackair-web) and the [hackAIR mobile app](https://github.com/hackair-project/hackair-mobile).
 
